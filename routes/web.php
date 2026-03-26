@@ -17,5 +17,13 @@ Route::prefix('admin')->group(function () {
         Route::get('/', [AdminPostController::class, 'index'])->name('admin.posts.index');
 
         Route::delete('/{id}', [AdminPostController::class, 'destroy'])->name('admin.posts.destroy');
+
+        //Thêm mới
+        Route::get('/create', [AdminPostController::class, 'create'])->name('admin.posts.create'); //Form thêm
+        Route::post('/create', [AdminPostController::class, 'store'])->name('admin.posts.store'); //Lưu thêm vào CSDL
+
+        //Cập nhật
+        Route::get('/edit/{id}', [AdminPostController::class, 'edit'])->name('admin.posts.edit');
+        Route::put('/edit/{id}', [AdminPostController::class, 'update'])->name('admin.posts.update');
     });
 });

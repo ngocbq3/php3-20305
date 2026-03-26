@@ -8,7 +8,7 @@
         <!-- Header -->
         <header class="header">
             <h1>Danh sách bài viết</h1>
-            <button class="btn-add">+ Thêm mới</button>
+            <a href="{{ route('admin.posts.create') }}" class="btn btn-add">+ Thêm mới</a>
         </header>
 
         <!-- Table -->
