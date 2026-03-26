@@ -17,4 +17,11 @@ class PostController extends Controller
 
         return view('admin.posts.index', compact('posts'));
     }
+
+    //Xóa dữ liệu
+    public function destroy($id)
+    {
+        Post::destroy($id);
+        return redirect()->back()->with('success', 'Xóa dữ liệu thành công');
+    }
 }

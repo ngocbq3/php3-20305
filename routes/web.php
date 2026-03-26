@@ -15,5 +15,7 @@ Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 Route::prefix('admin')->group(function () {
     Route::prefix('posts')->group(function () {
         Route::get('/', [AdminPostController::class, 'index'])->name('admin.posts.index');
+
+        Route::delete('/{id}', [AdminPostController::class, 'destroy'])->name('admin.posts.destroy');
     });
 });

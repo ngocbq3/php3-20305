@@ -38,7 +38,12 @@
                             <td> {{ $post->created_at->format('d/m/Y') }} </td>
                             <td>
                                 <button class="btn edit">Sửa</button>
-                                <button class="btn delete">Xóa</button>
+                                <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn delete"
+                                        onclick="return confirm('Bạn có muốn xóa không?')">Xóa</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
