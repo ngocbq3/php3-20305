@@ -50,4 +50,28 @@ class PostController extends Controller
             ->route('admin.posts.index')
             ->with('success', 'Thêm dữ liệu thành công');
     }
+
+    //Form edit
+    public function edit($id)
+    {
+        $post = Post::query()->findOrFail($id);
+        $categories = Category::all();
+        return view(
+            'admin.posts.edit',
+            compact('post', 'categories')
+        );
+    }
+    //cập nhật
+    public function update(Request $request, $id)
+    {
+        $data = $request->except('image');
+        if ($request->hasFile('image')) {
+            $data['image'] = $request->file('image')->store('images');
+        }
+        $post = Post::query()->findOrFail($id);
+        $post->update($data);
+        return redirect()
+            ->route('admin.posts.edit', $post->id)
+            ->with('success', 'Cập nhật dữ liệu thành công');
+    }
 }

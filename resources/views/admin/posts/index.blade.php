@@ -37,8 +37,9 @@
                             <td> {{ $post->view }} </td>
                             <td> {{ $post->created_at->format('d/m/Y') }} </td>
                             <td>
-                                <button class="btn edit">Sửa</button>
-                                <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}" method="post">
+                                <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
+                                <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}"
+                                    method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn delete"
