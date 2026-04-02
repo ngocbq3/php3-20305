@@ -8,6 +8,13 @@
 
             <h2>Cập nhật bài viết</h2>
 
+            @if ($errors->any())
+                <h2>Bạn cần nhập đúng dữ liệu</h2>
+                @foreach ($errors->all() as $error)
+                    <li class="text-danger">{{ $error }}</li>
+                @endforeach
+            @endif
+
             <form action="{{ route('admin.posts.update', $post->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
