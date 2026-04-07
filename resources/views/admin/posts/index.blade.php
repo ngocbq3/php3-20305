@@ -38,13 +38,17 @@
                             <td> {{ $post->created_at->format('d/m/Y') }} </td>
                             <td>
                                 <a href="{{ route('admin.posts.edit', $post->id) }}" class="btn btn-primary">Edit</a>
-                                <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}"
-                                    method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn delete"
-                                        onclick="return confirm('Bạn có muốn xóa không?')">Xóa</button>
-                                </form>
+
+                                @if (Auth::user()->role === 'admin')
+                                    <form class="d-inline" action="{{ route('admin.posts.destroy', $post->id) }}"
+                                        method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn delete"
+                                            onclick="return confirm('Bạn có muốn xóa không?')">Xóa</button>
+                                    </form>
+                                @endif
+
                             </td>
                         </tr>
                     @endforeach

@@ -14,11 +14,19 @@
 
         <!-- Sidebar -->
         <aside class="sidebar">
-            <h2>Admin</h2>
+            <h2>
+                {{ Auth::user()->name }}
+            </h2>
             <ul>
                 <li class="active">Bài viết</li>
                 <li>Danh mục</li>
                 <li>Người dùng</li>
+                <li>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="btn btn-link">Đăng xuất</button>
+                    </form>
+                </li>
             </ul>
         </aside>
 
